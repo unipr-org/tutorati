@@ -16,8 +16,10 @@ int main() {
     cout << "Inserire il numero di anni: ";
     cin >> _numeroAnni;
 
+    float _capitaleFinale = _capitaleIniziale * pow(1 + _tassoAnnuo / 100, _numeroAnni);
+
     cout << "L'importo totale accumulato e': " << 
-        _capitaleIniziale * pow(1 + _tassoAnnuo / 100, _numeroAnni)
+        _capitaleFinale
         << endl;
 
     return 0;

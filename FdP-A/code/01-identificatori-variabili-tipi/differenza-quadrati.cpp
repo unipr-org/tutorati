@@ -10,8 +10,10 @@ int main() {
     cout << "Inserire il secondo intero: ";
     cin >> _b;
 
+    int _differenza = (_a * _a) - (_b * _b);
+
     cout << "La diﬀerenza tra i quadrati dei due numeri e': " << 
-        (_a * _a) - (_b * _b)
+        _differenza
         << endl;
 
     return 0;

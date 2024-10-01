@@ -7,8 +7,10 @@ int main() {
     cout << "Inserire i minuti: ";
     cin >> _minuti;
 
+    int _secondi = _minuti * 60;
+
     cout << "L'equivalente tempo in secondi e': " << 
-        _minuti * 60 
+        _secondi
         << endl;
 
     return 0;
