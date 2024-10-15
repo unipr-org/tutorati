@@ -5,3 +5,12 @@
 
 # EdL
 ./EdL/tex/
+
+
+# VScode
+
+
+.vscode
+.vscode/*
+*/.vscode
+*/.vscode/*
