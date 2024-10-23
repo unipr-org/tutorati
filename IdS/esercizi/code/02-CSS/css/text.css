@@ -1,0 +1,44 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: left;
+}
+
+h1 {
+    text-align: center;
+    color: rgba(34, 34, 34, 0.9);
+}
+
+h3 {
+    text-align: left;
+    color: rgba(70, 130, 180, 1);
+}
+
+p {
+    text-align: justify;
+    color: rgba(0, 0, 0, 0.8);
+}
+
+code {
+    font-family: "Courier New", monospace;
+    background-color: rgba(240, 240, 240, 1);
+    padding: 2px 4px;
+    border-radius: 4px;
+}
+
+pre {
+    font-family: "Courier New", monospace;
+    background-color: rgba(240, 240, 240, 1);
+    padding: 10px;
+    border-radius: 4px;
+    overflow: auto;
+}
+
+a {
+    color: rgba(0, 120, 215, 1);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: rgba(255, 69, 0, 1);
+}

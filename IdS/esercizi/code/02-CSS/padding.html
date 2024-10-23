@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="it">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="author" content="Simone Colli" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Padding, Margin, Box Shadow, Position, Z-Index</title>
+        <style>
+            .row {
+                display: flex;
+                /* flex-wrap: wrap; */
+                width: 100%;
+                justify-content: space-around;
+                margin-bottom: 50px;
+            }
+            .container {
+                width: 300px;
+                height: 300px;
+                background-color: antiquewhite;
+                border: 2px solid black;
+                text-align: center;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                position: relative;
+            }
+            .content {
+                background-color: aliceblue;
+                border: 2px solid black;
+                width: 250px;
+                height: 250px;
+            }
+
+            /* Classi per padding e margin */
+            .m20 {
+                margin: 20px;
+            }
+            .m50 {
+                margin: 50px;
+            }
+            .p20 {
+                padding: 20px;
+            }
+            .p10 {
+                padding: 10px;
+            }
+            .p50 {
+                padding: 50px;
+            }
+
+            /* Bordo e ombra */
+            .border-and-shadow {
+                border: 3px dashed red;
+                box-shadow: 10px 10px 15px rgba(255, 0, 0, 0.4);
+            }
+            .shadow-only {
+                box-shadow: 5px 5px 20px 20px rgba(0, 0, 0, 0.5);
+            }
+            .border-thick {
+                border: 5px solid blue;
+            }
+
+            /* Position e Z-index */
+            .relative-box {
+                position: relative;
+                top: 10px;
+                left: 10px;
+                background-color: lightgreen;
+                padding: 10px;
+                z-index: 1;
+            }
+
+            .absolute-box {
+                position: absolute;
+                top: 10px;
+                left: 10px;
+                width: 50px;
+                height: 50px;
+                background-color: rgba(0, 0, 255, 0.7);
+                z-index: 0;
+            }
+
+            .zindex-low {
+                width: 100px;
+                height: 100px;
+                background-color: lightcoral;
+                z-index: -1;
+            }
+
+            .fixed-box {
+                position: fixed;
+                bottom: 10px;
+                right: 10px;
+                width: 100px;
+                height: 100px;
+                background-color: darkseagreen;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="row">
+            <div class="cell">
+                <p>Padding (20px) sul container</p>
+                <div class="container p20">
+                    <p class="content">Padding di 20px</p>
+                </div>
+            </div>
+
+            <div class="cell">
+                <p>Padding (10px) sul container</p>
+                <div class="container p10">
+                    <p class="content">Padding di 10px</p>
+                </div>
+            </div>
+
+            <div class="cell">
+                <p>Padding (50px) sul container</p>
+                <div class="container p50">
+                    <p class="content">Padding di 50px</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="cell">
+                <p>Margin (20px) sul content</p>
+                <div class="container">
+                    <p class="content m20">Margin di 20px</p>
+                </div>
+            </div>
+
+            <div class="cell">
+                <p>Margin (50px) sul content</p>
+                <div class="container">
+                    <p class="content m50">Margin di 50px</p>
+                </div>
+            </div>
+
+            <div class="cell">
+                <p>Padding e Margin combinati</p>
+                <div class="container p20">
+                    <p class="content m20">Padding 20px, Margin 20px</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="cell">
+                <p>Border e Box-Shadow</p>
+                <div class="container border-and-shadow">
+                    <p class="content">Bordo e ombra</p>
+                </div>
+            </div>
+
+            <div class="cell">
+                <p>Solo Box-Shadow</p>
+                <div class="container shadow-only">
+                    <p
+                        class="content"
+                        style="box-shadow: inset 0 0 10px rgba(255, 0, 0, 0.8)">
+                        Solo ombra
+                    </p>
+                </div>
+            </div>
+
+            <div class="cell">
+                <p>Border spesso (5px)</p>
+                <div class="container border-thick">
+                    <p class="content">Bordo spesso</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="cell">
+                <p>Position relative e absolute</p>
+                <div class="container">
+                    <div class="relative-box">
+                        Relativo
+                        <div class="absolute-box"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cell">
+                <p>Z-index negativo</p>
+                <div class="container">
+                    <div class="content">Box superiore</div>
+                    <div class="zindex-low">Box con z-index -1</div>
+                </div>
+            </div>
+
+            <div class="cell">
+                <p>Box con position fixed</p>
+                <div class="container">
+                    <div class="fixed-box">Box fissato</div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

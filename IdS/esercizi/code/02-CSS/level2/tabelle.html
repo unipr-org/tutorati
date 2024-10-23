@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="it">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="Author" content="Simone Colli" />
+        <title>Tabelle</title>
+    </head>
+    <body>
+        <h1>Le tabelle con vari attributi</h1>
+        <p>
+            Le tabelle possono tornare utili a rappresentare i dati. <br />
+            Nelle tabelle è possibile unire righe e/o colonne o modificare gli
+            stili.
+        </p>
+
+        <br />
+        <h2>Tabella senza rowspan o colspan</h2>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Età</th>
+                    <th>Città</th>
+                    <th>Professione</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Mario</td>
+                    <td>25</td>
+                    <td>Roma</td>
+                    <td>Ingegnere</td>
+                </tr>
+                <tr>
+                    <td>Anna</td>
+                    <td>30</td>
+                    <td>Milano</td>
+                    <td>Avvocato</td>
+                </tr>
+                <tr>
+                    <td>Paolo</td>
+                    <td>28</td>
+                    <td>Torino</td>
+                    <td>Architetto</td>
+                </tr>
+                <tr>
+                    <td>Luca</td>
+                    <td>32</td>
+                    <td>Firenze</td>
+                    <td>Medico</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <br />
+        <!-- Tabella con solo rowspan -->
+        <h2>Tabella con solo rowspan</h2>
+        <table border="1" width="80%" cellpadding="10">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Età</th>
+                    <th>Città</th>
+                    <th>Professione</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td rowspan="2">Mario</td>
+                    <td>25</td>
+                    <td>Roma</td>
+                    <td>Ingegnere</td>
+                </tr>
+                <tr>
+                    <td>26</td>
+                    <td>Napoli</td>
+                    <td>Insegnante</td>
+                </tr>
+                <tr>
+                    <td rowspan="2">Anna</td>
+                    <td>30</td>
+                    <td>Milano</td>
+                    <td>Avvocato</td>
+                </tr>
+                <tr>
+                    <td>32</td>
+                    <td>Bologna</td>
+                    <td>Commercialista</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <br />
+        <!-- Tabella con solo colspan -->
+        <h2>Tabella con solo colspan</h2>
+        <table border="1" width="80%" cellpadding="10">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Età</th>
+                    <th colspan="2">Località</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Mario</td>
+                    <td>25</td>
+                    <td>Roma</td>
+                    <td>Lazio</td>
+                </tr>
+                <tr>
+                    <td>Anna</td>
+                    <td>30</td>
+                    <td>Milano</td>
+                    <td>Lombardia</td>
+                </tr>
+                <tr>
+                    <td>Paolo</td>
+                    <td>28</td>
+                    <td>Torino</td>
+                    <td>Piemonte</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <br />
+        <!-- Tabella con colspan e rowspan -->
+        <h2>Tabella con colspan e rowspan</h2>
+        <table border="1" width="80%" cellpadding="10">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th colspan="2">Dettagli</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td rowspan="2">Mario</td>
+                    <td>Età: 25</td>
+                    <td>Città: Roma</td>
+                </tr>
+                <tr>
+                    <td colspan="2">Professione: Ingegnere</td>
+                </tr>
+                <tr>
+                    <td>Anna</td>
+                    <td>Età: 30</td>
+                    <td>Città: Milano</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <br />
+        <h2>Tabella degli studenti con valutazioni</h2>
+        <table border="1" bgcolor="#f0f8ff" width="80%" cellpadding="10">
+            <thead>
+                <tr bgcolor="#add8e6">
+                    <th align="left">Matricola</th>
+                    <th align="center">Nome</th>
+                    <th align="center">Corso</th>
+                    <th align="right">Voto</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr bgcolor="#90ee90">
+                    <!-- Promosso -->
+                    <td align="left">12345</td>
+                    <td align="center">Mario</td>
+                    <td align="center">Matematica</td>
+                    <td align="right">28</td>
+                </tr>
+                <tr bgcolor="#ffcccb">
+                    <!-- Bocciato -->
+                    <td align="left">12346</td>
+                    <td align="center">Anna</td>
+                    <td align="center">Fisica</td>
+                    <td align="right">15</td>
+                </tr>
+                <tr bgcolor="#90ee90">
+                    <!-- Promosso -->
+                    <td align="left">12347</td>
+                    <td align="center">Paolo</td>
+                    <td align="center">Informatica</td>
+                    <td align="right">22</td>
+                </tr>
+                <tr bgcolor="#ffcccb">
+                    <!-- Bocciato -->
+                    <td align="left">12348</td>
+                    <td align="center">Luca</td>
+                    <td align="center">Chimica</td>
+                    <td align="right">12</td>
+                </tr>
+            </tbody>
+        </table>
+    </body>
+</html>

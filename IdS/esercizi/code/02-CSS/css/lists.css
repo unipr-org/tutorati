@@ -1,0 +1,35 @@
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+}
+
+h2,
+h3 {
+    color: rgba(34, 34, 34, 0.9);
+}
+
+ol {
+    list-style-type: decimal;
+}
+
+ol li {
+    font-weight: bold;
+    color: rgba(70, 130, 180, 1);
+}
+
+ol li:hover {
+    color: rgba(255, 69, 0, 1);
+}
+
+ul {
+    list-style-type: disc;
+}
+
+ul li {
+    font-style: italic;
+    color: rgba(50, 205, 50, 1);
+}
+
+ul li:hover {
+    color: rgba(255, 165, 0, 1);
+}
