@@ -41,26 +41,25 @@ int main(){
         k++;
     }
 
-    // stampa
     cout << "Unione con (possibili) duplicati" << endl;
     for(int i = 0; i < k; i++){
         cout << unione[i] << " ";
     }
     cout << endl;
 
-    // eliminazione duplicati
+    // Eliminazione duplicati
     for(int i = 0; i < k; i++){
         for(int j = i + 1; j < k; j++){
             if(unione[i] == unione[j]){
                 for(int z = j; z < k - 1; z++){
                     unione[z] = unione[z + 1];
                 }
-                k--;
+                k--; // Aggiorno la dimensione dell'array unione
+                j--; // Mi riposiziono sull'elemento appena spostato
             }
         }
     }
 
-    // stampa
     cout << "Unione senza duplicati" << endl;
     for(int i = 0; i < k; i++){
         cout << unione[i] << " ";

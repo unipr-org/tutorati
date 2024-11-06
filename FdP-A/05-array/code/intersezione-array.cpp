@@ -43,26 +43,25 @@ int main(){
         }
     }
 
-    // stampa
     cout << "Intersezione con (possibili) duplicati" << endl;
     for(int i = 0; i < k; i++){
         cout << intersezione[i] << " ";
     }
     cout << endl;
 
-    // eliminazione duplicati
+    // Eliminazione duplicati
     for(int i = 0; i < k; i++){
         for(int j = i + 1; j < k; j++){
             if(intersezione[i] == intersezione[j]){
                 for(int z = j; z < k - 1; z++){
                     intersezione[z] = intersezione[z + 1];
                 }
-                k--;
+                k--; // Aggiorno la dimensione dell'array unione
+                j--; // Mi riposiziono sull'elemento appena spostato
             }
         }
     }
 
-    // stampa
     cout << "Intersezione senza duplicati" << endl;
     for(int i = 0; i < k; i++){
         cout << intersezione[i] << " ";
