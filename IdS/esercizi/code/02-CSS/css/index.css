@@ -26,11 +26,11 @@ ul {
     background-color: beige;
 }
 
-li {
+.nav-cell {
     float: left;
 }
 
-li a {
+.nav-cell a {
     display: block;
     color: black;
     text-align: center;
@@ -41,11 +41,12 @@ li a {
 li a:hover {
     background-color: lightblue;
 }
-h2 {
+
+#struttura-wordir {
     text-decoration: underline;
 }
 
-pre {
+#workdir-pre {
     background-color: white;
     padding: 10px;
     border: 1px solid #ccc;

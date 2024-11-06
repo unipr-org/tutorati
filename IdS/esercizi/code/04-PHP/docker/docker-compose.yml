@@ -1,0 +1,12 @@
+services:
+    web-server:
+        container_name: web-server
+        hostname: web-server
+        image: web-server
+        build:
+            context: .
+            dockerfile: ./Dockerfile
+        volumes:
+            - ../web/:/var/www/html/
+        ports:
+            - 80:80

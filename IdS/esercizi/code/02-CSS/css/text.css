@@ -28,9 +28,10 @@ code {
 pre {
     font-family: "Courier New", monospace;
     background-color: rgba(240, 240, 240, 1);
-    padding: 10px;
+    padding: 20px;
     border-radius: 4px;
     overflow: auto;
+    height: 10px;
 }
 
 a {
