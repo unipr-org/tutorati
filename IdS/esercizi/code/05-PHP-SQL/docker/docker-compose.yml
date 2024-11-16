@@ -1,0 +1,48 @@
+services:
+    web-server-backend:
+        container_name: web-server-backend
+        hostname: web-server-backend
+        image: web-server-backend
+        # image: php:apache
+        build:
+            context: .
+            dockerfile: ./Dockerfile-backend
+        volumes:
+            - ../web/:/var/www/html/
+        ports:
+            - 80:80
+        environment:
+            - MYSQL_HOST=php_docker
+            - MYSQL_USER=${MYSQL_USER}
+            - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+            - MYSQL_DATABASE=${MYSQL_DATABASE}
+        depends_on:
+            - php_docker
+
+    php_docker:
+        container_name: php_docker
+        hostname: php_docker
+        image: php_docker
+        build:
+            context: .
+            dockerfile: ./Dockerfile-db # Assicurati che questo sia il nome del file Dockerfile del DB
+        environment:
+            MYSQL_DATABASE: ${MYSQL_DATABASE}
+            MYSQL_USER: ${MYSQL_USER}
+            MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+            MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+            MYSQL_ALLOW_AMPTY_PASSWORD: "yes"
+        ports:
+            - ${MYSQL_PORT}:3306
+        volumes:
+            - ./db_data/:/docker-entrypoint-initdb.d/
+
+    web-server-phpmyadmin:
+        image: phpmyadmin/phpmyadmin
+        ports:
+            - 8001:80
+        environment:
+            - PMA_HOST=php_docker
+            - PMA_PORT=3306
+        # volumes:
+        #     - db_data:/var/lib/mysql
