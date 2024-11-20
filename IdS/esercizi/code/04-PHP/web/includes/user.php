@@ -6,13 +6,11 @@
     <div class="container">
         <?php
         $path = __DIR__ . "./../assets/data/courses.csv";
-        // foreach (file($path) as $line) {
-        //     echo $line . "<br />\n";
-        // }
-
+        // echo "<h1>" . __DIR__ . "</h1>";
         $content = '<section class="row row-cols-1 row-cols-md-3 g-4">';
         foreach (file($path) as $line) {
             $data = explode(",", trim($line));
+            // $content .= "{$data}<br>";
             $content .= "
             <article class='col'>
                 <a class='card text-bg-dark overflow-hidden' target='_blank' href='/pages/course.php?id={$data[0]}'>
