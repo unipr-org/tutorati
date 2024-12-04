@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <p id="res"></p>
+        <button id="login">Logins</button>
+    </body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        $("#login").click(function () {
+            console.log("Ho fatto click")
+            $.ajax({
+                url: "http://my-server.com:8080/users/login",
+                type: "GET",
+                dataType: "json",
+                success: function (res) {
+                    $("#res").html(JSON.stringify(res))
+                },
+                error: function (err) {
+                    console.log(err)
+                    alert(err)
+                },
+            })
+        })
+    </script>
+</html>
