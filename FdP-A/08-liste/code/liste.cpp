@@ -130,6 +130,34 @@ node* intersect(node* lst1, node* lst2) {
     return new_list;
 }
 
+void rimuoviNegativi(node* &lst){
+    // rimuovi eventuali nodi iniziali con valore < 0
+    while (lst != nullptr && lst->data < 0) {
+        node* temp = lst;
+        lst = lst->next;
+        delete temp;
+    }
+
+    // se la lista è ora vuota, ritorna
+    if (lst == nullptr) 
+        return;
+    
+    // gestisci i nodi rimanenti
+    node* curr = lst;
+
+    while (curr->next != nullptr) {
+        if (curr->next->data < 0) {
+            // rimuovi il nodo successivo
+            node* temp = curr->next;
+            curr->next = curr->next->next;
+            delete temp;
+        } else {
+            // passa al nodo successivo
+            curr = curr->next;
+        }
+    }
+}
+
 int main(){
     node* lst = nullptr;
     add(lst, 10);
@@ -156,10 +184,28 @@ int main(){
     node* lstIntersect = intersect(lst, lst2);
     print(lstIntersect);
 
+
+    node* lst3 = nullptr;
+    add(lst3, 10);
+    add(lst3, -20);
+    add(lst3, 30);
+    add(lst3, -40);
+    add(lst3, 50);
+    add(lst3, -10);
+    print(lst3);
+    rimuoviNegativi(lst3);
+    print(lst3);
+    
+
+
+
+
     free(lst);
     free(lst2);
     free(lstIntervallata);
     free(lstIntersect);
+    free(lst3);
+    
 
     return 0;
 }
