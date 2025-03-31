@@ -1,0 +1,1 @@
+gcc -Wall -Wextra -pedantic -o banker main.c banker.c
