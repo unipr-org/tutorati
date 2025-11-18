@@ -13,15 +13,14 @@ int main() {
     cin.getline(sost, 50);
 
     char out[300];
-    int j = 0; // indice per output
+    int j = 0;
 
-    // calcola lunghezza della parola da cercare
     int lenCerca = 0;
     while (cerca[lenCerca] != '\0')
         lenCerca++;
 
     for (int i = 0; s[i] != '\0'; ) {
-        // verifica se c'è una corrispondenza
+
         bool uguale = true;
         for (int k = 0; k < lenCerca; k++) {
             if (s[i + k] == '\0' || s[i + k] != cerca[k]) {
@@ -30,16 +29,13 @@ int main() {
             }
         }
 
-        // se combacia, copia la parola sostitutiva
         if (uguale) {
             int k = 0;
             while (sost[k] != '\0') {
                 out[j++] = sost[k++];
             }
-            i += lenCerca; // salta la parola originale
-        }
-        // altrimenti copia solo un carattere
-        else {
+            i += lenCerca;
+        } else {
             out[j++] = s[i++];
         }
     }
