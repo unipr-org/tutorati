@@ -10,7 +10,6 @@ int main() {
     int i = 0;
     while (testo[i] != '\0') {
         if (testo[i] >= 'a' && testo[i] <= 'z') {
-
             if (i == 0 || testo[i - 1] == ' ') {
                 testo[i] = testo[i] - 32;
             }

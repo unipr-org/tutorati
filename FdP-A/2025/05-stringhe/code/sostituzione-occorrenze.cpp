@@ -20,7 +20,6 @@ int main() {
         lenCerca++;
 
     for (int i = 0; s[i] != '\0'; ) {
-
         bool uguale = true;
         for (int k = 0; k < lenCerca; k++) {
             if (s[i + k] == '\0' || s[i + k] != cerca[k]) {

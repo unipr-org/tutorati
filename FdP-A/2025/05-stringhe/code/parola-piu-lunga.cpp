@@ -2,36 +2,40 @@
 using namespace std;
 
 int main() {
-    char s[200];
-    cout << "Inserisci una stringa: ";
-    cin.getline(s, 200);
+    char s[300];
+    cin.getline(s, 300);
 
-    int maxLen = 0;
-    int currLen = 0;
-    int maxStart = 0;
-    int currStart = 0;
+    int maxLen = 0, maxStart = 0;
+    int len = 0, start = 0;
 
-    for (int i = 0; ; i++) {
-        if (s[i] != ' ' && s[i] != '\0') {
-            if (currLen == 0)
-                currStart = i;
-            currLen++;
+    int i = 0;
+    while (s[i] != '\0') {
+        if (s[i] != ' ') {
+            if (len == 0)
+                start = i;
+            len++;
         } else {
-            if (currLen > maxLen) {
-                maxLen = currLen;
-                maxStart = currStart;
+            if (len > maxLen) {
+                maxLen = len;
+                maxStart = start;
             }
-            currLen = 0;
+            len = 0;
         }
 
-        if (s[i] == '\0') break;
+        i++;
     }
 
-    cout << "Parola piu' lunga: ";
-    for (int i = 0; i < maxLen; i++)
-        cout << s[maxStart + i];
+    // Dopo la stringa potrebbe esserci una parola che non è stata chiusa da uno spazio
+    if (len > maxLen) {
+        maxLen = len;
+        maxStart = start;
+    }
 
-    cout << " (lunghezza = " << maxLen << ")" << endl;
+    // Stampa della parola più lunga
+    for (int k = 0; k < maxLen; k++)
+        cout << s[maxStart + k];
+
+    cout << " (" << maxLen << ")";
 
     return 0;
 }

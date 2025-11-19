@@ -2,34 +2,36 @@
 using namespace std;
 
 int main() {
-    char s[200];
-    cout << "Inserisci una stringa: ";
-    cin.getline(s, 200);
+    char s[300], out[300];
+    cin.getline(s, 300);
 
-    char out[200];
-    int j = 0;
-    bool spazioPrecedente = true;
+    int i = 0, j = 0;
 
-    // Rimuovi spazi extra e spazi all'inizio
-    for (int i = 0; s[i] != '\0'; i++) {
+    // Skippa spazi iniziali
+    while (s[i] == ' ')
+        i++;
+
+    bool spazio = false;
+
+    while (s[i] != '\0') {
         if (s[i] != ' ') {
             out[j++] = s[i];
-            spazioPrecedente = false;
+            spazio = false;
         } else {
-            if (!spazioPrecedente) {
+            if (!spazio) {
                 out[j++] = ' ';
+                spazio = true;
             }
-            spazioPrecedente = true;
         }
+        i++;
     }
 
-    // Rimuove eventuale spazio finale
-    if (j > 0 && out[j-1] == ' ')
+    // Rimuovi eventuale spazio finale
+    if (j > 0 && out[j - 1] == ' ')
         j--;
 
     out[j] = '\0';
 
-    cout << "Stringa pulita: \"" << out << "\"" << endl;
+    cout << out << endl;
     return 0;
 }
-

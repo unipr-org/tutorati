@@ -8,18 +8,15 @@ int main() {
     cin.getline(testo, 200);
 
     int len = 0;
-    while (testo[len] != '\0') {
+    while (testo[len] != '\0')
         len++;
-    }
 
     int fineParola = len;
 
     cout << "Parole invertite: ";
 
     for (int i = len - 1; i >= 0; i--) {
-
         if (testo[i] == ' ' || i == 0) {
-
             int inizioParola;
             if (i == 0) {
                 inizioParola = 0;
