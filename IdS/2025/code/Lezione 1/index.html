@@ -1,0 +1,87 @@
+<html lang="it">
+<head>
+    <!-- codifica dei caratteri -->
+    <meta charset="UTF-8">
+    <!-- configurazione del viewport per dispositivi mobili -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- autore della pagina -->
+    <meta name="author" content="Simone Colli">
+    <!-- parole chiave per i motori di ricerca -->
+    <meta name="keywords" content="to do list, task manager, productivity">
+    <!-- icona visualizzata nella scheda del browser -->
+    <!-- <link rel="icon" type="image/x-icon" href="favicon.ico"> -->
+    <title>To Do List</title>
+</head>
+<body>
+    <header>
+        <h1>To Do List</h1>
+        <p>Applicazione sviluppata durante il tutorato di ingegneria del software</p>
+    </header>
+    
+    <main>
+        <section class="section-1">
+            <h2>Le mie attività usando una lista</h2>
+            <ul id="task-list">
+                <li>Esempio di attività 1</li>
+                <li>Esempio di attività 2</li>
+                <li>Esempio di attività 3</li>
+            </ul>
+        </section>
+        
+        <section class="section-1-table">
+            <h2>Le mie attività usando una table</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Attività</th>
+                        <th>Descrizione</th>
+                        <th>Scadenza</th>
+                        <th>Priorità</th>
+                        <th>Stato</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Esempio di attività 1</td>
+                        <td>Descrizione attività 1</td>
+                        <td>2025-01-01</td>
+                        <td>Alta</td>
+                        <td>In corso</td>
+                    </tr>
+                    <tr>
+                        <td>Esempio di attività 2</td>
+                        <td>Descrizione attività 2</td>
+                        <td>2025-01-02</td>
+                        <td>Media</td>
+                        <td>Completata</td>
+                    </tr>
+                    <tr>
+                        <td>Esempio di attività 3</td>
+                        <td>Descrizione attività 3</td>
+                        <td>2025-01-03</td>
+                        <td>Bassa</td>
+                        <td>Non iniziata</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        <section class="section-2">
+            <h2>Azioni rapide</h2>
+            <section>
+                <p>
+                    Aggiunta nuova attività:
+                </p>
+                <form>
+                    <input type="text" id="new-task" name="new-task" placeholder="Inserisci la descrizione">
+                    <button type="submit">Aggiungi</button>
+                </form>
+            </section>
+            
+        </section>
+    </main>
+    
+    <footer>
+        <p>© 2025 To Do List - Simone Colli</p>
+    </footer>
+</body>
+</html>
