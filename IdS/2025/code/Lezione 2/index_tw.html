@@ -1,0 +1,96 @@
+<html lang="it">
+<head>
+    <!-- codifica dei caratteri -->
+    <meta charset="UTF-8">
+    <!-- configurazione del viewport per dispositivi mobili -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- autore della pagina -->
+    <meta name="author" content="Simone Colli">
+    <!-- parole chiave per i motori di ricerca -->
+    <meta name="keywords" content="to do list, task manager, productivity">
+    <!-- icona visualizzata nella scheda del browser -->
+    <!-- <link rel="icon" type="image/x-icon" href="favicon.ico"> -->
+    <title>To Do List</title>
+
+    <!-- posso rimuovere il file css (se non ne ho bisogno) se uso tailwind -->
+    <!-- <link rel="stylesheet" href="./style.css"> -->
+
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    
+</head>
+<body class="bg-gray-100 min-h-screen pl-2.5 flex flex-col items-center justify-center w-full font-sans">
+    <header class="mt-[4vh] flex flex-col items-start justify-start w-full">
+        <h1 class="text-3xl font-bold m-0">To Do List</h1>
+        <p class="italic">Applicazione sviluppata durante il tutorato di ingegneria del software</p>
+    </header>
+    
+    <main class="w-full flex flex-col my-auto">
+        <section class="p-5 w-full flex flex-col">
+            <h2 class="text-2xl font-semibold w-full text-left mb-4">Le mie attività usando una lista</h2>
+            <ul id="task-list" class="list-none p-0 m-0">
+                <li class="py-1">Esempio di attività 1</li>
+                <li class="py-1">Esempio di attività 2</li>
+                <li class="py-1">Esempio di attività 3</li>
+            </ul>
+        </section>
+        
+        <section class="p-5 w-full">
+            <h2 class="text-2xl font-semibold w-full text-left mb-4">Le mie attività usando una table</h2>
+            <table class="border-collapse w-full">
+                <thead>
+                    <tr>
+                        <th class="border border-black p-2 text-left">Attività</th>
+                        <th class="border border-black p-2 text-left">Descrizione</th>
+                        <th class="border border-black p-2 text-left">Scadenza</th>
+                        <th class="border border-black p-2 text-left">Priorità</th>
+                        <th class="border border-black p-2 text-left">Stato</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="border border-black p-2">Esempio di attività 1</td>
+                        <td class="border border-black p-2">Descrizione attività 1</td>
+                        <td class="border border-black p-2">2025-01-01</td>
+                        <td class="border border-black p-2">Alta</td>
+                        <td class="border border-black p-2">In corso</td>
+                    </tr>
+                    <tr>
+                        <td class="border border-black p-2">Esempio di attività 2</td>
+                        <td class="border border-black p-2">Descrizione attività 2</td>
+                        <td class="border border-black p-2">2025-01-02</td>
+                        <td class="border border-black p-2">Media</td>
+                        <td class="border border-black p-2">Completata</td>
+                    </tr>
+                    <tr>
+                        <td class="border border-black p-2">Esempio di attività 3</td>
+                        <td class="border border-black p-2">Descrizione attività 3</td>
+                        <td class="border border-black p-2">2025-01-03</td>
+                        <td class="border border-black p-2">Bassa</td>
+                        <td class="border border-black p-2">Non iniziata</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        <section class="p-5 w-full">
+            <h2 class="text-2xl font-semibold mb-4">Azioni rapide</h2>
+            <div>
+                <p class="mb-2">
+                    Aggiunta nuova attività:
+                </p>
+                <form class="flex gap-2">
+                    <input type="text" id="new-task" name="new-task" placeholder="Inserisci la descrizione" 
+                           class="flex-1 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <button type="submit" 
+                            class="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition-colors">
+                        Aggiungi
+                    </button>
+                </form>
+            </div>
+        </section>
+    </main>
+    
+    <footer class="mt-auto mb-0 w-full p-5">
+        <p class="text-center text-gray-600">© 2025 To Do List - Simone Colli</p>
+    </footer>
+</body>
+</html>

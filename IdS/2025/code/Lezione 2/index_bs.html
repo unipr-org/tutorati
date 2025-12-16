@@ -1,0 +1,94 @@
+<html lang="it">
+<head>
+    <!-- codifica dei caratteri -->
+    <meta charset="UTF-8">
+    <!-- configurazione del viewport per dispositivi mobili -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- autore della pagina -->
+    <meta name="author" content="Simone Colli">
+    <!-- parole chiave per i motori di ricerca -->
+    <meta name="keywords" content="to do list, task manager, productivity">
+    <!-- icona visualizzata nella scheda del browser -->
+    <!-- <link rel="icon" type="image/x-icon" href="favicon.ico"> -->
+    <title>To Do List</title>
+
+    <!-- posso rimuovere il file css (se non ne ho bisogno) se uso tailwind -->
+    <!-- <link rel="stylesheet" href="./style.css"> -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>    
+</head>
+<body class="bg-light min-vh-100 d-flex flex-column align-items-center justify-content-center w-100 ps-2">
+    <header class="mt-5 d-flex flex-column align-items-start justify-content-start w-100">
+        <h1 class="display-5 fw-bold m-0">To Do List</h1>
+        <p class="fst-italic">Applicazione sviluppata durante il tutorato di ingegneria del software</p>
+    </header>
+    
+    <main class="w-100 d-flex flex-column my-auto">
+        <section class="p-4 w-100 d-flex flex-column">
+            <h2 class="fs-3 fw-semibold w-100 text-start mb-4">Le mie attività usando una lista</h2>
+            <ul id="task-list" class="list-unstyled p-0 m-0">
+                <li class="py-2">Esempio di attività 1</li>
+                <li class="py-2">Esempio di attività 2</li>
+                <li class="py-2">Esempio di attività 3</li>
+            </ul>
+        </section>
+        
+        <section class="p-4 w-100">
+            <h2 class="fs-3 fw-semibold w-100 text-start mb-4">Le mie attività usando una table</h2>
+            <table class="table table-bordered w-100">
+                <thead>
+                    <tr>
+                        <th class="text-start">Attività</th>
+                        <th class="text-start">Descrizione</th>
+                        <th class="text-start">Scadenza</th>
+                        <th class="text-start">Priorità</th>
+                        <th class="text-start">Stato</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Esempio di attività 1</td>
+                        <td>Descrizione attività 1</td>
+                        <td>2025-01-01</td>
+                        <td>Alta</td>
+                        <td>In corso</td>
+                    </tr>
+                    <tr>
+                        <td>Esempio di attività 2</td>
+                        <td>Descrizione attività 2</td>
+                        <td>2025-01-02</td>
+                        <td>Media</td>
+                        <td>Completata</td>
+                    </tr>
+                    <tr>
+                        <td>Esempio di attività 3</td>
+                        <td>Descrizione attività 3</td>
+                        <td>2025-01-03</td>
+                        <td>Bassa</td>
+                        <td>Non iniziata</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        <section class="p-4 w-100">
+            <h2 class="fs-3 fw-semibold mb-4">Azioni rapide</h2>
+            <div>
+                <p class="mb-3">
+                    Aggiunta nuova attività:
+                </p>
+                <form class="d-flex gap-2">
+                    <input type="text" id="new-task" name="new-task" placeholder="Inserisci la descrizione" 
+                           class="form-control">
+                    <button type="submit" class="btn btn-primary">
+                        Aggiungi
+                    </button>
+                </form>
+            </div>
+        </section>
+    </main>
+    
+    <footer class="mt-auto mb-0 w-100 p-4">
+        <p class="text-center text-secondary">© 2025 To Do List - Simone Colli</p>
+    </footer>
+</body>
+</html>
