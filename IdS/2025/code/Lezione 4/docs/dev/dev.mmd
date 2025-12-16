@@ -1,0 +1,32 @@
+graph TB
+    subgraph "Docker host"
+        subgraph "Frontend"
+        WEB1[Apache web server<br/>httpd:2.4]
+        end
+
+        subgraph "Backend"
+        API1[Laravel API server<br/>php:8.2-apache]
+        end
+
+        subgraph "Database"
+            DB[(MySQL<br/>mysql:8.4)]
+        end
+
+        subgraph "Volumes"
+            VOL1[/db-data/]
+            VOL2[/backend-laravel/]
+            VOL2[/backend-python/]
+            VOL3[/frontend/]
+        end
+    end
+
+    CLIENT[Client browser]
+
+    CLIENT -->|HTTP/HTTPS| WEB1
+
+    WEB1 -->|API requests| API1
+    API1 -->|DB queries| DB
+
+    DB -->|Data storage| VOL1
+    API1 -->|Codebase| VOL2
+    WEB1 -->|Codebase| VOL3

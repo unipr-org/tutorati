@@ -1,0 +1,48 @@
+graph TB
+    subgraph "Frontend"
+        subgraph "html"
+            task_entry[TaskEntry]
+            modal_view_html[ModalView]
+        end
+        subgraph "js"
+        task_view[TaskView]
+        %% task_presenter[TaskPresenter]
+        task_model[TaskModel]
+
+        %% modal_presenter[ModalPresenter]
+        modal_view[ModalView]
+        modal_model[ModalModel]
+
+        %% comunication[comunication channel]
+        app_presenter[AppPresenter]
+        end
+
+
+    end
+
+
+    subgraph "localStorage"
+        task_storage[TaskStorage]
+    end
+
+    %% prossima settimana
+    subgraph "Backend"
+        API[Endpoint API]
+    end
+    task_view --> |rendering| task_entry
+    task_view --> |istruisce| app_presenter
+    task_presenter --> |aggiorna| task_view
+    task_presenter --> |interroga/modifica| task_model
+
+    task_model --> |salva/carica| task_storage
+    %% task_model --> |API calls| API -> prossima settimana
+
+
+    modal_view --> |rendering| modal_view_html
+
+    app_presenter --> |aggiorna| modal_view
+    app_presenter --> |interroga/modifica| modal_model
+
+    %% comunication --> |apre/chiude| modal_presenter
+    %% comunication --> |crea task| task_presenter
+
