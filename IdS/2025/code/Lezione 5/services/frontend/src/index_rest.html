@@ -1,0 +1,230 @@
+<html lang="it">
+  <head>
+    <!-- codifica dei caratteri -->
+    <meta charset="UTF-8" />
+    <!-- configurazione del viewport per dispositivi mobili -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- autore della pagina -->
+    <meta name="author" content="Simone Colli" />
+    <!-- parole chiave per i motori di ricerca -->
+    <meta name="keywords" content="to do list, task manager, productivity" />
+    <!-- icona visualizzata nella scheda del browser -->
+    <!-- <link rel="icon" type="image/x-icon" href="favicon.ico"> -->
+    <title>To Do List</title>
+
+    <!-- posso rimuovere il file css (se non ne ho bisogno) se uso tailwind -->
+    <!-- <link rel="stylesheet" href="./style.css"> -->
+
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  </head>
+
+  <body
+    class="bg-gray-100 min-h-screen pl-2.5 flex flex-col items-center justify-center w-full font-sans"
+  >
+    <header class="mt-[4vh] flex flex-col items-start justify-start w-full">
+      <h1 class="text-3xl font-bold m-0">To Do List</h1>
+      <p class="italic">
+        Applicazione sviluppata durante il tutorato di ingegneria del software
+      </p>
+    </header>
+
+    <main class="w-full flex flex-col my-auto mt-4">
+      <section class="p-5 w-full">
+        <h2 class="text-2xl font-semibold w-full text-left mb-4">
+          Le mie attività usando una table
+        </h2>
+        <table class="border-collapse w-full">
+          <thead>
+            <tr>
+              <th class="border border-black p-2 text-left">Attività</th>
+              <th class="border border-black p-2 text-left">Descrizione</th>
+              <th class="border border-black p-2 text-left">Scadenza</th>
+              <th class="border border-black p-2 text-left">Priorità</th>
+              <th class="border border-black p-2 text-left">Stato</th>
+              <th class="border border-black p-2 text-left">Azioni</th>
+            </tr>
+          </thead>
+          <tbody id="task-table-body">
+            <!-- <tr>
+                        <td class="border border-black p-2">Esempio di attività 1</td>
+                        <td class="border border-black p-2">Descrizione attività 1</td>
+                        <td class="border border-black p-2">2025-01-01</td>
+                        <td class="border border-black p-2">Alta</td>
+                        <td class="border border-black p-2">In corso</td>
+                    </tr>
+                    <tr>
+                        <td class="border border-black p-2">Esempio di attività 2</td>
+                        <td class="border border-black p-2">Descrizione attività 2</td>
+                        <td class="border border-black p-2">2025-01-02</td>
+                        <td class="border border-black p-2">Media</td>
+                        <td class="border border-black p-2">Completata</td>
+                    </tr>
+                    <tr>
+                        <td class="border border-black p-2">Esempio di attività 3</td>
+                        <td class="border border-black p-2">Descrizione attività 3</td>
+                        <td class="border border-black p-2">2025-01-03</td>
+                        <td class="border border-black p-2">Bassa</td>
+                        <td class="border border-black p-2">Non iniziata</td>
+                    </tr> -->
+          </tbody>
+        </table>
+        <div class="mt-4 flex justify-center gap-4">
+          <button
+            id="open-modal-btn"
+            class="w-12 h-12 rounded-full text-2xl font-bold hover:border hover:border-black-500 hover:cursor-pointer transition-colors shadow-lg flex items-center justify-center"
+          >
+            <?xml version="1.0" encoding="UTF-8"?><svg
+              width="24px"
+              height="24px"
+              stroke-width="1.5"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              color="#000000"
+            >
+              <path
+                d="M9 12H12M15 12H12M12 12V9M12 12V15"
+                stroke="#000000"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              ></path>
+              <path
+                d="M21 3.6V20.4C21 20.7314 20.7314 21 20.4 21H3.6C3.26863 21 3 20.7314 3 20.4V3.6C3 3.26863 3.26863 3 3.6 3H20.4C20.7314 3 21 3.26863 21 3.6Z"
+                stroke="#000000"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              ></path>
+            </svg>
+          </button>
+          <button
+            id="clear-all-btn"
+            class="px-4 py-2 bg-red-500 text-white rounded-md hover:bg-red-600 transition-colors shadow-lg"
+          >
+            Cancella tutto
+          </button>
+        </div>
+      </section>
+    </main>
+
+    <!-- Modal per aggiungere nuova attività -->
+    <div
+      id="task-modal"
+      class="hidden fixed inset-0 bg-white bg-opacity-50 flex items-center justify-center z-50"
+    >
+      <div class="bg-white rounded-lg shadow-xl p-6 w-full max-w-md mx-4">
+        <div class="flex justify-between items-center mb-4">
+          <h2 class="text-2xl font-semibold">Nuova Attività</h2>
+          <!-- ! se non ho l'icona ruotata per la x posso sfruttarne un altra (+) e ruotarla -->
+          <button
+            id="close-modal-btn"
+            class="text-gray-500 hover:text-gray-700 text-2xl font-bold hover:cursor-pointer transition-colors flex items-center justify-center rotate-45"
+          >
+            <?xml version="1.0" encoding="UTF-8"?><svg
+              width="24px"
+              height="24px"
+              stroke-width="1.5"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              color="#000000"
+            >
+              <path
+                d="M6 12H12M18 12H12M12 12V6M12 12V18"
+                stroke="#000000"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              ></path>
+            </svg>
+          </button>
+        </div>
+
+        <form id="task-form" class="flex flex-col gap-3">
+          <input
+            type="text"
+            id="task-name"
+            name="task-name"
+            placeholder="Nome attività"
+            required
+            class="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+
+          <input
+            type="text"
+            id="task-desc"
+            name="task-desc"
+            placeholder="Descrizione"
+            required
+            class="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+
+          <input
+            type="date"
+            id="task-due-date"
+            name="task-due-date"
+            required
+            class="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+
+          <select
+            id="task-priority"
+            name="task-priority"
+            required
+            class="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+          >
+            <option value="">Seleziona priorità</option>
+            <option value="high">Alta</option>
+            <option value="medium">Media</option>
+            <option value="low">Bassa</option>
+          </select>
+
+          <select
+            id="task-status"
+            name="task-status"
+            required
+            class="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+          >
+            <option value="">Seleziona stato</option>
+            <option value="pending">Non iniziata</option>
+            <option value="in_progress">In corso</option>
+            <option value="complete">Completata</option>
+          </select>
+
+          <button
+            type="submit"
+            class="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition-colors"
+          >
+            Aggiungi
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <footer class="mt-auto mb-0 w-full p-5">
+      <p class="text-center text-gray-600">© 2025 To Do List - Simone Colli</p>
+    </footer>
+
+    <!-- nota: il ?v=2 è per forzare il refresh della cache del browser -->
+    <!-- namespace -->
+    <script>window.App = window.App || {};</script>
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    
+    <!-- Models -->
+    <script src="./js/models/Task.js?v=2"></script>
+    <script src="./js/models/TaskList.js?v=2"></script>
+    <script src="./js/models/Task2persistentStorage_rest.js?v=2"></script>
+    
+    <!-- Views -->
+    <script src="./js/views/AppView.js?v=2"></script>
+    <script src="./js/views/TaskListView.js?v=2"></script>
+    <script src="./js/views/ModalView.js?v=2"></script>
+    
+    <!-- Presenters -->
+    <script src="./js/presenters/AppPresenter_rest.js?v=2"></script>
+    
+    <!-- Bootstrap Application -->
+    <script src="./script_rest.js?v=2"></script>
+  </body>
+</html>

@@ -1,0 +1,45 @@
+# immagine di base
+FROM ubuntu:24.04
+
+# variabili dambiente per evitare interazioni durante l'installazione
+ENV DEBIAN_FRONTEND=noninteractive
+ENV TZ=Europe/Rome
+
+# installazione di Apache, PHP e MySQL
+RUN apt-get update && apt-get install -y \
+    php \
+    apache2 \
+    libapache2-mod-php \
+    php-mysql \
+    mariadb-server \
+    mariadb-client \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
+
+# creo cartella per le api
+RUN mkdir -p /var/www/api/
+
+RUN a2enmod rewrite
+
+# configurazione MySQL/MariaDB
+RUN mkdir -p /var/run/mysqld \
+    && chown -R mysql:mysql /var/run/mysqld \
+    && chown -R mysql:mysql /var/lib/mysql \
+    && sed -i 's/bind-address\s*=\s*127\.0\.0\.1/bind-address = 0.0.0.0/' /etc/mysql/mariadb.conf.d/50-server.cnf
+
+# copio le configurazioni personalizzate di apache
+COPY ./config/apache/000-default.conf /etc/apache2/sites-available/000-default.conf
+COPY ./config/apache/ports.conf /etc/apache2/ports.conf
+
+# porte esposte
+EXPOSE 80
+EXPOSE 8080
+EXPOSE 3306
+
+# script di avvio per Apache e MySQL
+COPY config/start.sh /start.sh
+COPY config/init_db.sql /config/init_db.sql
+
+RUN chmod +x /start.sh
+
+CMD ["/start.sh"]

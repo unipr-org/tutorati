@@ -1,0 +1,5 @@
+# ignora tutto
+*
+# tranne gitkeep e gitignore
+!.gitkeep
+!.gitignore
