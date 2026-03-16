@@ -3,8 +3,8 @@
 #include <stdlib.h>
 #include <stddef.h>
 #include <unistd.h>
-#include <sys/wait.h> 
 #include <stdbool.h>
+#include <sys/wait.h> 
 #include <sys/shm.h> 
 
 
@@ -163,7 +163,6 @@ main(int argc, char* argv[]) {
         printf("Almeno un processo non ha terminato correttamente.\n");
     }
 
-    
 
     for (size_t i = 0; i < rows; ++i) {
         free(matrix[i]);
