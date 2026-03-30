@@ -1,0 +1,8 @@
+tick,cpu_0,cpu_1
+0,B,A
+1,B,A
+2,C,B
+3,C,A
+4,D,A
+5,D,C
+6,A,C
