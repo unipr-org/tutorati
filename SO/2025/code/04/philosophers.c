@@ -6,12 +6,13 @@
 #define N 5
 #define LEFT(i) ((i + N - 1) % N)
 #define RIGHT(i) ((i + 1) % N)
-
 enum { THINKING, HUNGRY, EATING } state[N];
+
 
 // variabile condivisa per terminare i thread
 int stop = 0;
 pthread_mutex_t terminationLock;
+
 
 // implementazione del monitor
 pthread_mutex_t mutex;
@@ -20,27 +21,9 @@ pthread_cond_t cond[N];
 // inizializzazione monitor
 void
 initMonitor() {
-    ppthread_cond_init(&cond[i], NULL);
-        state[i] = THINKING;thread_mutex_init(&mutex, NULL);
-    for(int i = 0; i < N; ++i) {
-        
-    }
-}
-
-// verifica se un filosofo può mangiare
-int
-canEat(int philId) {
-    return (state[philId] == HUNGRY &&
-            state[LEFT(philId)] != EATING &&
-            state[RIGHT(philId)] != EATING);
-}
-
-void
-test(int philId) {
-    if (canEat(philId)) {
-        state[philId] = EATING;
-        pthread_cond_signal(&cond[philId]);
-    }
+    pthread_mutex_init(&mutex, NULL);
+    for(int i = 0; i < N; ++i)
+        pthread_cond_init(&cond[i], NULL);
 }
 
 void
@@ -50,15 +33,13 @@ pickupChopsticks(int philId) {
     state[philId] = HUNGRY;
     printf("Il filosofo %d è affamato\n", philId);
     
+    // il filosofo prende le bacchette senza controllare
+    // se sono entrambe libere
+    printf("Il filosofo %d sta aspettando le bacchette\n", philId);
+    pthread_cond_wait(&cond[philId], &mutex);
     
-    // verifica se può mangiare
-    test(philId);
-    
-    // se non può mangiare, aspetta
-    while (state[philId] != EATING) {
-        pthread_cond_wait(&cond[philId], &mutex);
-    }
-    
+    state[philId] = EATING;
+
     printf("Il filosofo %d sta mangiando\n", philId);
     pthread_mutex_unlock(&mutex);
 }
@@ -70,9 +51,13 @@ returnChopsticks(int philId) {
     state[philId] = THINKING;
     printf("Il filosofo %d sta pensando\n", philId);
     
-    // verifica se i vicini possono mangiare
-    test(LEFT(philId));
-    test(RIGHT(philId));
+
+    if (state[LEFT(philId)] == HUNGRY) {
+        pthread_cond_signal(&cond[LEFT(philId)]);
+    }
+    if (state[RIGHT(philId)] == HUNGRY) {
+        pthread_cond_signal(&cond[RIGHT(philId)]);
+    }
     
     pthread_mutex_unlock(&mutex);
 }
@@ -84,17 +69,17 @@ philosopher(void* arg) {
     int run = 1;
     while(run) {
         printf("Il filosofo %d sta pensando\n", philId);
-        sleep(rand() % 3);
+        sleep(rand() % 2);
         
         pickupChopsticks(philId);
         
-        sleep(rand() % 3);
+        // sleep(rand() % 2);
         
         returnChopsticks(philId);
 
         pthread_mutex_lock(&terminationLock);
         if (stop){
-            printf("Il filosofo %d sta terminando\n", philId);
+            printf("Uno scrittore sta terminando\n");
             run = 0;
         }
         pthread_mutex_unlock(&terminationLock);
@@ -111,39 +96,40 @@ cleanup() {
     }
 }
 
+
 int
 main() {
+    
     pthread_t philosophers[N];
     int philIds[N];
     pthread_mutex_init(&terminationLock, NULL);
     
     initMonitor();
     
-    // Creazione dei thread filosofi
+
     for(int i = 0; i < N; ++i) {
         philIds[i] = i;
+
         if(pthread_create(&philosophers[i], NULL, philosopher, &philIds[i]) != 0) {
             perror("pthread_create");
             exit(1);
         }
     }
     
-    printf("\nPremi invio per terminare\n");
+    printf("\nPremi qualsiasi tasto per terminare\n");
     getchar();
 
     pthread_mutex_lock(&terminationLock);
-    printf("*******************************\n");
+    printf("*******************************");
     printf("Terminazione in corso\n");
     stop = 1;
-    printf("*******************************\n");
+    printf("*******************************");
     pthread_mutex_unlock(&terminationLock);
-    
-    // Attesa terminazione thread
+
     for(int i = 0; i < N; ++i) {
         pthread_join(philosophers[i], NULL);
     }
-    
+
     cleanup();
-    
     return 0;
 }
