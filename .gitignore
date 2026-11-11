@@ -6,10 +6,10 @@
 # EdL
 ./EdL/tex/
 
+# FdP
+*.o
 
 # VScode
-
-
 .vscode
 .vscode/*
 */.vscode
